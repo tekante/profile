@@ -1,5 +1,8 @@
 core = 7.12
 api = 2
+
+includes[] = drupal-org-core.make
+
 projects[field_group][subdir] = contrib
 projects[field_group][version] = 1.1
 projects[references][subdir] = contrib

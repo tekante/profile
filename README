@@ -1,0 +1,16 @@
+How this relates to drupal.org build steps
+
+1. Check the install profile directory out of Git from the appropriate tag and create a tarball of just that
+
+git clone git://github.com/febbraro/profile.git && cd profile && git checkout $TAG
+tar -czvf profile.tgz profile
+
+2. Build the drupal-org.make file (if it exists) in --no-core mode to get the profile and all dependencies without core
+
+drush make --no-core drupal-org.make profile-no-core
+?? The above will produce the sites directory but the profile code is not present, not sure what this build is supposed to be
+
+3. Create a separate .make file to *just* build core and then move the directory tree from step #2 into place under the profiles directory
+
+drush make drupal-org-core.make core
+?? mv profile-no-core core/profiles/profile  - since the item in step 2 isn't the profile not sure what the correct step is here
