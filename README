@@ -7,10 +7,10 @@ tar -czvf profile.tgz profile
 
 2. Build the drupal-org.make file (if it exists) in --no-core mode to get the profile and all dependencies without core
 
-drush make --no-core drupal-org.make profile-no-core
-?? The above will produce the sites directory but the profile code is not present, not sure what this build is supposed to be
+drush make --no-core build-profile.make
+?? Even though step one already has the profile code, there doesn't seem to be a way to have it build using something like drush make --no-core and get the same structure as it would have gotten when it recurses
 
 3. Create a separate .make file to *just* build core and then move the directory tree from step #2 into place under the profiles directory
 
 drush make drupal-org-core.make core
-?? mv profile-no-core core/profiles/profile  - since the item in step 2 isn't the profile not sure what the correct step is here
+mv profile-no-core/profiles/profile core/profiles/profile
